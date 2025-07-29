@@ -1,42 +1,42 @@
 import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ListaContactos from './screens/ListaContactos';
-import AgregarContacto from './screens/AgregarContacto';
+import ContactListScreen from './screens/ContactListScreen';
+import AddContactScreen from './screens/AddContactScreen';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [contactos, setContactos] = useState([]);
-  const [filtro, setFiltro] = useState('todos');
+  const [contacts, setContacts] = useState([]);
+  const [filter, setFilter] = useState('all');
 
-  const agregarContacto = (contacto) => {
-    setContactos([...contactos, { ...contacto, id: Date.now() }]);
-  }
+  const addContact = (contact) => {
+    setContacts([...contacts, { ...contact, id: Date.now() }]);
+  };
 
-  const alternarFavorito = (id) => {
-    setContactos((prev) =>
-      prev.map((c) => (c.id === id ? { ...c, favorito: !c.favorito } : c))
+  const toggleFavorite = (id) => {
+    setContacts((prev) =>
+      prev.map((c) => (c.id === id ? { ...c, favorite: !c.favorite } : c))
     );
   };
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="ListaContactos">
+        <Stack.Screen name="lista de contactos">
           {(props) => (
-            <ListaContactos
+            <ContactListScreen
               {...props}
-              contactos={contactos}
-              filtro={filtro}
-              setFiltro={setFiltro}
-              alternarFavorito={alternarFavorito}
+              contacts={contacts}
+              filter={filter}
+              setFilter={setFilter}
+              toggleFavorite={toggleFavorite}
             />
           )}
         </Stack.Screen>
-        <Stack.Screen name="AgregarContacto">
+        <Stack.Screen name="contacto nuevo">
           {(props) => (
-            <AgregarContacto {...props} agregarContacto={agregarContacto} />
+            <AddContactScreen {...props} addContact={addContact} />
           )}
         </Stack.Screen>
       </Stack.Navigator>
