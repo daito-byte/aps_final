@@ -32,7 +32,7 @@ Si descargaste o clonaste este proyecto desde GitHub, sigue estos pasos para eje
 
 1. **Clona el repositorio o descarga el ZIP**:
    ```bash
-   git clone https://github.com/tu-usuario/agenda-contactos.git
+   git clone https://github.com/byte-daito/agenda-contactos.git
    cd agenda-contactos
    
 2. Instala las dependencias:npm install
@@ -45,15 +45,25 @@ Presiona a para abrir en Android, i para iOS.
 
 
 📁 aps_final/
+
 ├── App.js
+
 ├── index.js
+
 ├── navigation/
+
 │   └── AppNavigator.js
+
 ├── screens/
+
 │   ├── AddContactScreen.js
+
 │   └── ContactListScreen.js
+
 ├── assets/
+
 ├── package.json
+
 └── README.md
 
 Autor
